@@ -13,15 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mykoroln'; 
 
     // --- Intl-Tel-Input Initializtion ---
+    let iti;
     const phoneInput = document.querySelector('input[name="phone"]');
-    const iti = window.intlTelInput(phoneInput, {
-        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
-        separateDialCode: true,
-        initialCountry: "auto",
-        geoIpLookup: function(success, failure) {
-            fetch("https://ipapi.co/json").then(res => res.json()).then(data => success(data.country_code)).catch(() => success("us"));
-        }
-    });
+    if (phoneInput && window.intlTelInput) {
+        iti = window.intlTelInput(phoneInput, {
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
+            separateDialCode: true,
+            initialCountry: "auto",
+            geoIpLookup: function(success, failure) {
+                fetch("https://ipapi.co/json").then(res => res.json()).then(data => success(data.country_code)).catch(() => success("us"));
+            }
+        });
+    }
 
     // --- Country Data for Nationality ---
     const countries = [
@@ -32,32 +35,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const countryOptionsContainer = document.getElementById('countryOptions');
     const nationalityInput = document.getElementById('nationalityInput');
     const customSelect = document.getElementById('nationalitySelect');
-    const selectTrigger = customSelect.querySelector('.select-trigger');
+    if (customSelect) {
+        const selectTrigger = customSelect.querySelector('.select-trigger');
 
-    countries.forEach(country => {
-        const optionDiv = document.createElement('div');
-        optionDiv.className = 'option';
-        optionDiv.dataset.value = country.name;
-        optionDiv.innerHTML = `<span class="fi fi-${country.code}"></span> ${country.name}`;
-        
-        optionDiv.addEventListener('click', () => {
-            selectTrigger.innerHTML = optionDiv.innerHTML;
-            nationalityInput.value = country.name;
-            customSelect.classList.remove('active');
+        countries.forEach(country => {
+            const optionDiv = document.createElement('div');
+            optionDiv.className = 'option';
+            optionDiv.dataset.value = country.name;
+            optionDiv.innerHTML = `<span class="fi fi-${country.code}"></span> ${country.name}`;
+            
+            optionDiv.addEventListener('click', () => {
+                selectTrigger.innerHTML = optionDiv.innerHTML;
+                nationalityInput.value = country.name;
+                customSelect.classList.remove('active');
+            });
+            
+            countryOptionsContainer.appendChild(optionDiv);
         });
-        
-        countryOptionsContainer.appendChild(optionDiv);
-    });
 
-    selectTrigger.addEventListener('click', () => {
-        customSelect.classList.toggle('active');
-    });
+        selectTrigger.addEventListener('click', () => {
+            customSelect.classList.toggle('active');
+        });
 
-    document.addEventListener('click', (e) => {
-        if (!customSelect.contains(e.target)) {
-            customSelect.classList.remove('active');
-        }
-    });
+        document.addEventListener('click', (e) => {
+            if (!customSelect.contains(e.target)) {
+                customSelect.classList.remove('active');
+            }
+        });
+    }
 
     // --- Navigation Logic ---
     function updateStep(step) {
@@ -140,18 +145,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Specific check for policy agreement checkbox
         const policyAgree = form.querySelector('input[name="policyAgree"]');
-        if (!policyAgree.checked) {
+        if (policyAgree && !policyAgree.checked) {
             alert('Please check the agreement box to proceed with your reservation.');
             policyAgree.focus();
             return;
         }
-
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-        data.treatments = Array.from(formData.getAll('treatment'));
-        
-        // Get full phone number with dial code
-        data.phone = iti.getNumber();
 
         const submitBtn = form.querySelector('.btn-submit');
         const originalText = submitBtn.innerHTML;
@@ -159,6 +157,15 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.innerHTML = 'Sending...';
 
         try {
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            data.treatments = Array.from(formData.getAll('treatment'));
+            
+            // Get full phone number with dial code
+            if (iti) {
+                data.phone = iti.getNumber();
+            }
+
             const response = await fetch(FORMSPREE_ENDPOINT, {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -173,12 +180,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.querySelector('.progress-bar').classList.add('hidden');
                 successMessage.classList.remove('hidden');
             } else {
+                const errorData = await response.json();
+                console.error('Formspree error:', errorData);
                 throw new Error('Formspree response not ok');
             }
 
         } catch (error) {
             console.error('Submission failed:', error);
-            alert('An error occurred during transmission. Please try again.');
+            alert('An error occurred during transmission. Please try again.\n(Error: ' + error.message + ')');
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalText;
         }
