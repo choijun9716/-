@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myungokhun Clinic - Treatment Reservation Survey</title>
+    <meta name="description" content="Reservation survey for customized treatment at Myungokhun Clinic.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <main class="app-container">
+        <header class="header">
+            <div class="logo-container">
+                <img src="assets/logo.png" alt="Myungokhun Clinic Logo" class="main-logo">
+            </div>
+            <p class="subtitle"></p>
+        </header>
+
+        <div class="progress-bar">
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="steps-indicator">
+                <span class="step-dot active"></span>
+                <span class="step-dot"></span>
+                <span class="step-dot"></span>
+            </div>
+        </div>
+
+        <form id="surveyForm" class="survey-form">
+            <!-- Step 1: Treatment & Dates -->
+            <section class="form-step active" data-step="1">
+                <div class="step-header">
+                    <h2>What treatment(s) are you interested in?</h2>
+                    <p class="notice">📌Please make sure your email address and WhatsApp number are entered correctly.
+                    </p>
+                </div>
+
+                <div class="treatment-grid">
+                    <label class="checkbox-card">
+                        <input type="checkbox" name="treatment" value="Diet Program">
+                        <span class="card-content">
+                            <span class="code">A</span>
+                            <span class="label">Diet Program</span>
+                        </span>
+                    </label>
+                    <label class="checkbox-card">
+                        <input type="checkbox" name="treatment" value="Facial Asymmetry">
+                        <span class="card-content">
+                            <span class="code">B</span>
+                            <span class="label">Facial Asymmetry Treatment</span>
+                        </span>
+                    </label>
+                    <label class="checkbox-card">
+                        <input type="checkbox" name="treatment" value="Thread Lifting">
+                        <span class="card-content">
+                            <span class="code">C</span>
+                            <span class="label">Thread Lifting (Face / Body)</span>
+                        </span>
+                    </label>
+                    <label class="checkbox-card">
+                        <input type="checkbox" name="treatment" value="Laser Lifting">
+                        <span class="card-content">
+                            <span class="code">D</span>
+                            <span class="label">Laser Lifting (Face / Body)</span>
+                        </span>
+                    </label>
+                    <label class="checkbox-card">
+                        <input type="checkbox" name="treatment" value="Scar Treatment">
+                        <span class="card-content">
+                            <span class="code">E</span>
+                            <span class="label">Scar Treatment</span>
+                        </span>
+                    </label>
+                    <label class="checkbox-card">
+                        <input type="checkbox" name="treatment" value="Stretch Mark">
+                        <span class="card-content">
+                            <span class="code">F</span>
+                            <span class="label">Stretch Mark Treatment</span>
+                        </span>
+                    </label>
+                    <label class="checkbox-card">
+                        <input type="checkbox" name="treatment" value="Acne Treatment">
+                        <span class="card-content">
+                            <span class="code">G</span>
+                            <span class="label">Acne Treatment</span>
+                        </span>
+                    </label>
+                    <label class="checkbox-card">
+                        <input type="checkbox" name="treatment" value="Skin Booster">
+                        <span class="card-content">
+                            <span class="code">H</span>
+                            <span class="label">Skin Booster Treatment</span>
+                        </span>
+                    </label>
+                    <label class="checkbox-card">
+                        <input type="checkbox" name="treatment" value="Herbal Medicine">
+                        <span class="card-content">
+                            <span class="code">I</span>
+                            <span class="label">Customized Herbal Medicine</span>
+                        </span>
+                    </label>
+                    <label class="checkbox-card">
+                        <input type="checkbox" name="treatment" value="Immune Enhancement">
+                        <span class="card-content">
+                            <span class="code">J</span>
+                            <span class="label">Immune Enhancement Treatment</span>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="date-selection">
+                    <h3>Please provide 3 possible dates for your appointment request.</h3>
+                    <p class="sub-notice">These are not confirmed appointment dates</p> <br>
+                    <div class="input-group">
+                        <input type="date" name="preferredDate1" required>
+                        <input type="date" name="preferredDate2">
+                        <input type="date" name="preferredDate3">
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button type="button" class="btn btn-primary next-step">Next Step <svg width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg></button>
+                </div>
+            </section>
+
+            <!-- Step 2: Basic Info -->
+            <section class="form-step" data-step="2">
+                <div class="step-header">
+                    <h2>Basic Information</h2>
+                    <p>Please enter detailed information for accurate consultation.</p>
+                </div>
+
+                <div class="grid-inputs">
+                    <div class="input-field">
+                        <label>Full Name *</label>
+                        <input type="text" name="fullName" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Phone Number *</label>
+                        <input type="tel" name="phone" placeholder="010-0000-0000" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Birth Date *</label>
+                        <input type="date" name="birthDate" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Email Address *</label>
+                        <input type="email" name="email" placeholder="example@mail.com" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Nationality</label>
+                        <input type="text" name="nationality" placeholder="Nationality">
+                    </div>
+                    <div class="input-field">
+                        <label>Biological Sex</label>
+                        <select name="sex">
+                            <option value="">Select</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="instagram-link">
+                    <label>Instagram link</label>
+                    <p class="hint">Please leave your Instagram ID or link for consultation confirmation.</p>
+                    <input type="text" name="instagram" placeholder="https://instagram.com/yourid">
+                </div>
+
+                <div class="radio-groups">
+                    <div class="radio-field">
+                        <label>I am... *</label>
+                        <div class="options">
+                            <label><input type="radio" name="residency" value="resident" required> <span>A resident in
+                                    Korea</span></label>
+                            <label><input type="radio" name="residency" value="visitor"> <span>A visitor for short
+                                    term</span></label>
+                        </div>
+                    </div>
+
+                    <div id="stayDuration" class="input-field hidden">
+                        <label>How long do you stay in Korea?</label>
+                        <input type="text" name="stayPeriod" placeholder="ex) 2025 Jan 1st - Feb 3rd">
+                    </div>
+
+                    <div class="radio-field">
+                        <label>Do you have Korean National Health Insurance? *</label>
+                        <div class="options">
+                            <label><input type="radio" name="insurance" value="yes" required> <span>Yes, I do
+                                    have.</span></label>
+                            <label><input type="radio" name="insurance" value="no"> <span>No, I do not
+                                    have.</span></label>
+                        </div>
+                    </div>
+
+                    <div class="input-field">
+                        <label>How did you get to know Myungokhun?</label>
+                        <select name="discovery">
+                            <option value="">Select</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="Google">Google</option>
+                            <option value="Friend">Friend</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button type="button" class="btn btn-secondary prev-step">Previous</button>
+                    <button type="button" class="btn btn-primary next-step">Next Step <svg width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg></button>
+                </div>
+            </section>
+
+            <!-- Step 3: Final Details -->
+            <section class="form-step" data-step="3">
+                <div class="step-header">
+                    <h2>Final Step</h2>
+                    <p>Please enter the number of people and additional information.</p>
+                </div>
+
+                <div class="input-field">
+                    <label>How many people are you booking for? *</label>
+                    <input type="number" name="peopleCount" min="1" value="1" required>
+                </div>
+
+                <div class="policy-box">
+                    <p>**For single-person bookings, no deposit is required.</p>
+                    <p>However, in the case of a same-day no-show, future reservations will not be allowed.</p>
+                    <label class="checkbox-simple">
+                        <input type="checkbox" name="policyAgree" required>
+                        <span>I have confirmed the above and agree to proceed with the reservation. *</span>
+                    </label>
+                </div>
+
+                <div class="input-field">
+                    <label>Message</label>
+                    <p class="hint">For bookings of 2 or more people, please provide the name, birthdate, and treatment
+                        of your companion(s).</p>
+                    <textarea name="message" rows="5" placeholder="Please enter any questions or additional requests."></textarea>
+                </div>
+
+                <div class="actions">
+                    <button type="button" class="btn btn-secondary prev-step">Previous</button>
+                    <button type="submit" class="btn btn-submit">Submit Reservation <svg width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                        </svg></button>
+                </div>
+            </section>
+        </form>
+
+        <div id="successMessage" class="success-message hidden">
+            <div class="success-icon">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+            </div>
+            <h2>Reservation Request Completed!</h2>
+            <p>We will contact you via the email and Instagram you provided.<br>Please wait a moment.</p>
+            <button type="button" class="btn btn-primary" onclick="location.reload()">Back to Home</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Myungokhun Clinic. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
