@@ -102,10 +102,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const inputs = currentStepEl.querySelectorAll('input[required], select[required], textarea[required]');
         
         let isValid = true;
+        let missingFields = [];
+
         inputs.forEach(input => {
-            if (!input.value || (input.type === 'checkbox' && !input.checked) || (input.type === 'radio' && !document.querySelector(`input[name="${input.name}"]:checked`))) {
+            const isFilled = input.value && (input.type !== 'checkbox' || input.checked) && (input.type !== 'radio' || document.querySelector(`input[name="${input.name}"]:checked`));
+            
+            if (!isFilled) {
                 input.style.borderColor = '#ef4444';
                 isValid = false;
+                
+                // Try to find a label for the missing field
+                let labelText = "";
+                const label = currentStepEl.querySelector(`label[for="${input.id}"]`) || input.closest('.input-field')?.querySelector('label');
+                if (label) {
+                    labelText = label.innerText.replace('*', '').trim();
+                    if (!missingFields.includes(labelText)) missingFields.push(labelText);
+                }
             } else {
                 input.style.borderColor = '#e0e0e0';
             }
@@ -120,7 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (!isValid) {
-            alert('Please fill in all required fields.');
+            const fieldList = missingFields.join(', ');
+            alert(`Please fill in the following required fields:\n- ${fieldList}`);
         }
         return isValid;
     }
@@ -143,6 +156,9 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        // Final validation check for current step
+        if (!validateStep(currentStep)) return;
+
         // Specific check for policy agreement checkbox
         const policyAgree = form.querySelector('input[name="policyAgree"]');
         if (policyAgree && !policyAgree.checked) {
@@ -161,7 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = Object.fromEntries(formData.entries());
             data.treatments = Array.from(formData.getAll('treatment'));
             
-            // Get full phone number with dial code
             if (iti) {
                 data.phone = iti.getNumber();
             }
