@@ -232,13 +232,14 @@ h1, h2, h3 {
     gap: 12px;
     margin-top: 15px;
     width: 100%;
+    max-width: 320px; /* 너비 제한 */
 }
 
 .date-selection input[type="date"] {
     display: block;
     width: 100%;
-    -webkit-appearance: none; /* Mobile Safari fix */
-    min-height: 48px;
+    min-height: 44px;
+    -webkit-appearance: none;
 }
 
 /* Inputs */
