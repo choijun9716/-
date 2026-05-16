@@ -162,22 +162,6 @@
                         <label>Phone Number *</label>
                         <input type="tel" name="phone" placeholder="010-0000-0000" required>
                     </div>
-                    <div class="input-field hidden" id="stayDuration">
-                        <label>Period of Stay in Korea</label>
-                        <div class="date-range-group">
-                            <div class="date-input-wrapper">
-                                <span class="input-tag">Arrival</span>
-                                <input type="text" name="arrivalDate" placeholder="YYYY-MM-DD"
-                                    onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
-                            </div>
-                            <span class="range-separator">~</span>
-                            <div class="date-input-wrapper">
-                                <span class="input-tag">Departure</span>
-                                <input type="text" name="departureDate" placeholder="YYYY-MM-DD"
-                                    onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
-                            </div>
-                        </div>
-                    </div>
                     <div class="input-field">
                         <label>Birth Date *</label>
                         <input type="date" name="birthDate" required>
@@ -226,8 +210,20 @@
                     </div>
 
                     <div id="stayDuration" class="input-field hidden">
-                        <label>How long do you stay in Korea?</label>
-                        <input type="text" name="stayPeriod" placeholder="ex) 2025 Jan 1st - Feb 3rd">
+                        <label>Period of Stay in Korea</label>
+                        <div class="date-range-group">
+                            <div class="date-input-wrapper">
+                                <span class="input-tag">Arrival</span>
+                                <input type="text" name="arrivalDate" placeholder="YYYY-MM-DD"
+                                    onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
+                            </div>
+                            <span class="range-separator">~</span>
+                            <div class="date-input-wrapper">
+                                <span class="input-tag">Departure</span>
+                                <input type="text" name="departureDate" placeholder="YYYY-MM-DD"
+                                    onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
+                            </div>
+                        </div>
                     </div>
 
                     <div class="radio-field">
