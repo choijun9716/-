@@ -229,8 +229,16 @@ h1, h2, h3 {
 .date-selection .input-group {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-top: 10px;
+    gap: 12px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.date-selection input[type="date"] {
+    display: block;
+    width: 100%;
+    -webkit-appearance: none; /* Mobile Safari fix */
+    min-height: 48px;
 }
 
 /* Inputs */
