@@ -138,6 +138,14 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        // Specific check for policy agreement checkbox
+        const policyAgree = form.querySelector('input[name="policyAgree"]');
+        if (!policyAgree.checked) {
+            alert('Please check the agreement box to proceed with your reservation.');
+            policyAgree.focus();
+            return;
+        }
+
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
         data.treatments = Array.from(formData.getAll('treatment'));
