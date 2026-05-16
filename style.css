@@ -445,9 +445,9 @@ input:focus, select:focus, textarea:focus {
 /* Buttons */
 .actions {
     display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    margin-top: 40px;
+    justify-content: center; /* 중앙 정렬 */
+    gap: 20px; /* 버튼 사이 간격 */
+    margin-top: 60px; /* 상단 간격 확대 */
 }
 
 .btn {
