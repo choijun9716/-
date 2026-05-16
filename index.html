@@ -13,6 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -160,6 +161,21 @@
                     <div class="input-field">
                         <label>Phone Number *</label>
                         <input type="tel" name="phone" placeholder="010-0000-0000" required>
+                    </div>
+                    <div class="input-field hidden" id="stayDuration">
+                        <label>Expected Period of Stay in Korea</label>
+                        <div class="grid-inputs">
+                            <div>
+                                <p class="hint">Arrival Date</p>
+                                <input type="text" name="arrivalDate" placeholder="Arrival Date"
+                                    onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
+                            </div>
+                            <div>
+                                <p class="hint">Departure Date</p>
+                                <input type="text" name="departureDate" placeholder="Departure Date"
+                                    onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
+                            </div>
+                        </div>
                     </div>
                     <div class="input-field">
                         <label>Birth Date *</label>
@@ -309,6 +325,7 @@
         <p class="copyright">&copy; 2024 Myungokhun Clinic. All rights reserved.</p>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
     <script src="script.js"></script>
 </body>
 

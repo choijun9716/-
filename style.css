@@ -321,6 +321,15 @@ h1, h2, h3 {
     gap: 20px;
 }
 
+/* Intl-Tel-Input Fixes */
+.iti {
+    width: 100%;
+}
+
+.iti__flag-container {
+    padding: 2px;
+}
+
 input[type="text"],
 input[type="tel"],
 input[type="email"],
