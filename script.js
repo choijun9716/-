@@ -9,10 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentStep = 1;
 
-    // --- Slack Webhook URL (Put your Slack Webhook URL here) ---
-    const SLACK_WEBHOOK_URL = 'https://hooks.slack.com/services/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'; 
-
-    // --- Formspree Endpoint (Put your Formspree ID or Email here) ---
+    // --- Formspree Endpoint ---
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mykoroln'; 
 
     // --- Navigation Logic ---
@@ -20,11 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
         steps.forEach(s => s.classList.remove('active'));
         document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
         
-        // Update Progress Bar
         const percent = ((step - 1) / (steps.length - 1)) * 100;
         progressFill.style.width = `${percent}%`;
 
-        // Update Dots
         dots.forEach((dot, idx) => {
             if (idx < step) dot.classList.add('active');
             else dot.classList.remove('active');
@@ -63,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Special check for treatments
         if (step === 1) {
             const checkedTreatments = currentStepEl.querySelectorAll('input[name="treatment"]:checked');
             if (checkedTreatments.length === 0) {
@@ -98,35 +92,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
-        
-        // Get all selected treatments
         data.treatments = Array.from(formData.getAll('treatment'));
 
-        console.log('Submission Data:', data);
-
-        // Submit Button State
         const submitBtn = form.querySelector('.btn-submit');
         const originalText = submitBtn.innerHTML;
         submitBtn.disabled = true;
         submitBtn.innerHTML = 'Sending...';
 
         try {
-            // 1. Send to Slack (If URL is provided)
-            let slackPromise = Promise.resolve();
-            if (SLACK_WEBHOOK_URL) {
-                slackPromise = sendToSlack(data);
+            const response = await fetch(FORMSPREE_ENDPOINT, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                form.classList.add('hidden');
+                document.querySelector('.progress-bar').classList.add('hidden');
+                successMessage.classList.remove('hidden');
+            } else {
+                throw new Error('Formspree response not ok');
             }
-
-            // 2. Send to Email via Formspree
-            const emailPromise = sendToEmail(data);
-
-            // Wait for both to complete
-            await Promise.all([slackPromise, emailPromise]);
-
-            // Show Success
-            form.classList.add('hidden');
-            document.querySelector('.progress-bar').classList.add('hidden');
-            successMessage.classList.remove('hidden');
 
         } catch (error) {
             console.error('Submission failed:', error);
@@ -135,48 +124,4 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.innerHTML = originalText;
         }
     });
-
-    async function sendToSlack(data) {
-        const message = {
-            text: "🔔 *New treatment reservation request received*",
-            attachments: [{
-                color: "#BA7626",
-                fields: [
-                    { title: "Name", value: data.fullName, short: true },
-                    { title: "Phone", value: data.phone, short: true },
-                    { title: "Email", value: data.email, short: true },
-                    { title: "Birth Date", value: data.birthDate, short: true },
-                    { title: "Treatments", value: data.treatments.join(', '), short: false },
-                    { title: "Preferred Dates", value: `${data.preferredDate1}, ${data.preferredDate2 || '-'}, ${data.preferredDate3 || '-'}`, short: false },
-                    { title: "Message", value: data.message || "N/A", short: false }
-                ]
-            }]
-        };
-
-        return fetch(SLACK_WEBHOOK_URL, {
-            method: 'POST',
-            body: JSON.stringify(message),
-            headers: { 'Content-Type': 'application/json' }
-        });
-    }
-
-    async function sendToEmail(data) {
-        // Prepare data for Formspree
-        const formBody = new FormData();
-        for (const key in data) {
-            if (Array.isArray(data[key])) {
-                formBody.append(key, data[key].join(', '));
-            } else {
-                formBody.append(key, data[key]);
-            }
-        }
-
-        return fetch(FORMSPREE_ENDPOINT, {
-            method: 'POST',
-            body: formBody,
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
-    }
 });
