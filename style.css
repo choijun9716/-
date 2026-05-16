@@ -242,6 +242,67 @@ h1, h2, h3 {
     -webkit-appearance: none;
 }
 
+/* Custom Select for Nationality */
+.custom-select {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.select-trigger {
+    padding: 12px 16px;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.custom-select:hover .select-trigger {
+    border-color: var(--primary);
+}
+
+.select-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin-top: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 100;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+    animation: fadeIn 0.2s ease;
+}
+
+.custom-select.active .select-options {
+    display: block;
+}
+
+.option {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.2s;
+}
+
+.option:hover {
+    background: #f8f1e9;
+}
+
+.fi {
+    border-radius: 2px;
+}
+
 /* Inputs */
 .input-field {
     margin-bottom: 20px;

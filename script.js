@@ -12,6 +12,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Formspree Endpoint ---
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mykoroln'; 
 
+    // --- Custom Select Logic ---
+    const customSelect = document.getElementById('nationalitySelect');
+    const selectTrigger = customSelect.querySelector('.select-trigger');
+    const selectOptions = customSelect.querySelectorAll('.option');
+    const nationalityInput = document.getElementById('nationalityInput');
+
+    selectTrigger.addEventListener('click', () => {
+        customSelect.classList.toggle('active');
+    });
+
+    selectOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            const val = option.getAttribute('data-value');
+            const html = option.innerHTML;
+            selectTrigger.innerHTML = html;
+            nationalityInput.value = val;
+            customSelect.classList.remove('active');
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!customSelect.contains(e.target)) {
+            customSelect.classList.remove('active');
+        }
+    });
+
     // --- Navigation Logic ---
     function updateStep(step) {
         steps.forEach(s => s.classList.remove('active'));

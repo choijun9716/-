@@ -12,6 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -170,21 +171,26 @@
                     </div>
                     <div class="input-field">
                         <label>Nationality</label>
-                        <select name="nationality">
-                            <option value="">Select Nationality</option>
-                            <option value="USA">United States</option>
-                            <option value="UK">United Kingdom</option>
-                            <option value="Canada">Canada</option>
-                            <option value="Australia">Australia</option>
-                            <option value="Singapore">Singapore</option>
-                            <option value="Malaysia">Malaysia</option>
-                            <option value="Vietnam">Vietnam</option>
-                            <option value="Thailand">Thailand</option>
-                            <option value="China">China</option>
-                            <option value="Japan">Japan</option>
-                            <option value="Korea">Korea</option>
-                            <option value="Others">Others</option>
-                        </select>
+                        <div class="custom-select" id="nationalitySelect">
+                            <div class="select-trigger">
+                                <span class="fi fi-kr"></span> <span>Select Nationality</span>
+                            </div>
+                            <div class="select-options">
+                                <div class="option" data-value="USA"><span class="fi fi-us"></span> United States</div>
+                                <div class="option" data-value="UK"><span class="fi fi-gb"></span> United Kingdom</div>
+                                <div class="option" data-value="Canada"><span class="fi fi-ca"></span> Canada</div>
+                                <div class="option" data-value="Australia"><span class="fi fi-au"></span> Australia</div>
+                                <div class="option" data-value="Singapore"><span class="fi fi-sg"></span> Singapore</div>
+                                <div class="option" data-value="Malaysia"><span class="fi fi-my"></span> Malaysia</div>
+                                <div class="option" data-value="Vietnam"><span class="fi fi-vn"></span> Vietnam</div>
+                                <div class="option" data-value="Thailand"><span class="fi fi-th"></span> Thailand</div>
+                                <div class="option" data-value="China"><span class="fi fi-cn"></span> China</div>
+                                <div class="option" data-value="Japan"><span class="fi fi-jp"></span> Japan</div>
+                                <div class="option" data-value="Korea"><span class="fi fi-kr"></span> Korea</div>
+                                <div class="option" data-value="Others">Others</div>
+                            </div>
+                            <input type="hidden" name="nationality" id="nationalityInput">
+                        </div>
                     </div>
                     <div class="input-field">
                         <label>Gender</label>
