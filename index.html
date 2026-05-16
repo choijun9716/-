@@ -126,9 +126,12 @@
                     <h3>Please provide 3 possible dates for your appointment request.</h3>
                     <p class="sub-notice">These are not confirmed appointment dates</p> <br>
                     <div class="input-group">
-                        <input type="date" name="preferredDate1" required>
-                        <input type="date" name="preferredDate2">
-                        <input type="date" name="preferredDate3">
+                        <input type="text" name="preferredDate1" placeholder="Choice 1: YYYY-MM-DD"
+                            onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" required>
+                        <input type="text" name="preferredDate2" placeholder="Choice 2: YYYY-MM-DD"
+                            onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
+                        <input type="text" name="preferredDate3" placeholder="Choice 3: YYYY-MM-DD"
+                            onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
                     </div>
                 </div>
 
@@ -258,7 +261,8 @@
                     <label>Message</label>
                     <p class="hint">For bookings of 2 or more people, please provide the name, birthdate, and treatment
                         of your companion(s).</p>
-                    <textarea name="message" rows="5" placeholder="Please enter any questions or additional requests."></textarea>
+                    <textarea name="message" rows="5"
+                        placeholder="Please enter any questions or additional requests."></textarea>
                 </div>
 
                 <div class="actions">
@@ -287,7 +291,13 @@
     </main>
 
     <footer class="footer">
-        <p>&copy; 2024 Myungokhun Clinic. All rights reserved.</p>
+        <div class="footer-info">
+            <p><strong>Myungokhun Korean Medicine Clinic</strong></p>
+            <p>Director: Jin-hyung Kim | Business Registration: 211-10-46681</p>
+            <p>Address: 3F, 726 Samseong-ro, Gangnam-gu, Seoul, Korea</p>
+            <p>Tel: 02-544-4646</p>
+        </div>
+        <p class="copyright">&copy; 2024 Myungokhun Clinic. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
