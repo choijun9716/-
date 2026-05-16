@@ -163,16 +163,17 @@
                         <input type="tel" name="phone" placeholder="010-0000-0000" required>
                     </div>
                     <div class="input-field hidden" id="stayDuration">
-                        <label>Expected Period of Stay in Korea</label>
-                        <div class="grid-inputs">
-                            <div>
-                                <p class="hint">Arrival Date</p>
-                                <input type="text" name="arrivalDate" placeholder="Arrival Date"
+                        <label>Period of Stay in Korea</label>
+                        <div class="date-range-group">
+                            <div class="date-input-wrapper">
+                                <span class="input-tag">Arrival</span>
+                                <input type="text" name="arrivalDate" placeholder="YYYY-MM-DD"
                                     onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
                             </div>
-                            <div>
-                                <p class="hint">Departure Date</p>
-                                <input type="text" name="departureDate" placeholder="Departure Date"
+                            <span class="range-separator">~</span>
+                            <div class="date-input-wrapper">
+                                <span class="input-tag">Departure</span>
+                                <input type="text" name="departureDate" placeholder="YYYY-MM-DD"
                                     onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
                             </div>
                         </div>
@@ -215,7 +216,7 @@
 
                 <div class="radio-groups">
                     <div class="radio-field">
-                        <label>I am... *</label>
+                        <label>Residency Status</label>
                         <div class="options">
                             <label><input type="radio" name="residency" value="resident" required> <span>A resident in
                                     Korea</span></label>
@@ -269,23 +270,25 @@
                 </div>
 
                 <div class="input-field">
-                    <label>How many people are you booking for? *</label>
+                    <label>Number of Patients</label>
                     <input type="number" name="peopleCount" min="1" value="1" required>
                 </div>
 
                 <div class="policy-box">
-                    <p>**For single-person bookings, no deposit is required.</p>
-                    <p>However, in the case of a same-day no-show, future reservations will not be allowed.</p>
+                    <p>A reservation deposit is required to secure your appointment and prevent no-shows.</p>
+                    <p>Once your reservation request has been reviewed and approved, <br>
+                        payment instructions for the deposit will be sent to your registered email address.</p>
                     <label class="checkbox-simple">
                         <input type="checkbox" name="policyAgree" required>
-                        <span>I have confirmed the above and agree to proceed with the reservation. *</span>
+                        <span>I have confirmed the above and agree to proceed with the reservation. </span>
                     </label>
                 </div>
 
                 <div class="input-field">
                     <label>Message</label>
-                    <p class="hint">For bookings of 2 or more people, please provide the name, birthdate, and treatment
-                        of your companion(s).</p>
+                    <p class="hint">For appointments involving two or more patients, <br>
+                        please provide the full name, date of birth, and requested treatment details for each patient.
+                    </p>
                     <textarea name="message" rows="5"
                         placeholder="Please enter any questions or additional requests."></textarea>
                 </div>

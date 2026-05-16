@@ -330,6 +330,42 @@ h1, h2, h3 {
     padding: 2px;
 }
 
+/* Date Range Group */
+.date-range-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.date-input-wrapper {
+    flex: 1;
+    position: relative;
+}
+
+.input-tag {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.range-separator {
+    margin-top: 20px;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+@media (max-width: 480px) {
+    .date-range-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .range-separator {
+        display: none;
+    }
+}
+
 input[type="text"],
 input[type="tel"],
 input[type="email"],
