@@ -126,11 +126,11 @@
                     <h3>Please provide 3 possible dates for your appointment request.</h3>
                     <p class="sub-notice">These are not confirmed appointment dates</p> <br>
                     <div class="input-group">
-                        <input type="text" name="preferredDate1" placeholder="Choice 1: YYYY-MM-DD"
+                        <input type="text" name="preferredDate1" placeholder="Option 1: YYYY-MM-DD"
                             onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" required>
-                        <input type="text" name="preferredDate2" placeholder="Choice 2: YYYY-MM-DD"
+                        <input type="text" name="preferredDate2" placeholder="Option 2: YYYY-MM-DD"
                             onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
-                        <input type="text" name="preferredDate3" placeholder="Choice 3: YYYY-MM-DD"
+                        <input type="text" name="preferredDate3" placeholder="Option 3: YYYY-MM-DD"
                             onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
                     </div>
                 </div>
@@ -170,10 +170,24 @@
                     </div>
                     <div class="input-field">
                         <label>Nationality</label>
-                        <input type="text" name="nationality" placeholder="Nationality">
+                        <select name="nationality">
+                            <option value="">Select Nationality</option>
+                            <option value="USA">United States</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Singapore">Singapore</option>
+                            <option value="Malaysia">Malaysia</option>
+                            <option value="Vietnam">Vietnam</option>
+                            <option value="Thailand">Thailand</option>
+                            <option value="China">China</option>
+                            <option value="Japan">Japan</option>
+                            <option value="Korea">Korea</option>
+                            <option value="Others">Others</option>
+                        </select>
                     </div>
                     <div class="input-field">
-                        <label>Biological Sex</label>
+                        <label>Gender</label>
                         <select name="sex">
                             <option value="">Select</option>
                             <option value="Male">Male</option>
