@@ -29,12 +29,12 @@
                 <img src="assets/logo.png" alt="Myungokhun Clinic Logo" class="main-logo">
             </div>
             <div class="header-link">
-                <a href="https://myungokhun.co.kr/main/view?sub_id=1" target="_blank" class="text-link">
-                    View Treatment Details 
+                <button type="button" id="openPdfBtn" class="text-link">
+                    View Treatment Details
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
                     </svg>
-                </a>
+                </button>
             </div>
         </header>
 
@@ -330,6 +330,29 @@
         </div>
         <p class="copyright">&copy; 2026 Myungokhun Clinic. All rights reserved.</p>
     </footer>
+
+    <!-- PDF Viewer Modal -->
+    <div id="pdfModal" class="pdf-modal hidden">
+        <div class="pdf-modal-overlay"></div>
+        <div class="pdf-modal-container">
+            <div class="pdf-modal-header">
+                <h3>Treatment Details (PDF)</h3>
+                <div class="pdf-modal-actions">
+                    <a href="https://myungokhunreservation.store/assets/guide.pdf" target="_blank"
+                        class="modal-action-btn" title="Open in New Tab">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
+                        </svg>
+                    </a>
+                    <button type="button" id="closePdfBtn" class="modal-close-btn">&times;</button>
+                </div>
+            </div>
+            <div class="pdf-modal-body">
+                <iframe id="pdfFrame" src="" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
     <script src="script.js"></script>

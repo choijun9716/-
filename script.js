@@ -12,6 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Formspree Endpoint ---
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mykoroln'; 
 
+    // --- Google Sheets Web App Endpoint ---
+    // 구글 스프레드시트 배포 완료 후 발급받은 웹 앱 URL을 아래 작은따옴표('') 사이에 넣어주세요.
+    // 예: const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/.../exec';
+    const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxg75nlJbZEqSpq-WydaaOmItvQmv7QuY57prNuQVeOkDiaHtf15TVhwK8UyTEx5nS7/exec';
+
     // --- Intl-Tel-Input Initializtion ---
     let iti;
     const phoneInput = document.querySelector('input[name="phone"]');
@@ -181,30 +186,104 @@ document.addEventListener('DOMContentLoaded', () => {
                 data.phone = iti.getNumber();
             }
 
-            const response = await fetch(FORMSPREE_ENDPOINT, {
+            // --- 폼 전송 프로미스 배열 생성 ---
+            const promises = [];
+
+            // 1. Formspree 전송 프로미스 추가
+            const formspreePromise = fetch(FORMSPREE_ENDPOINT, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
+            }).then(async (res) => {
+                if (!res.ok) {
+                    const errorData = await res.json().catch(() => ({}));
+                    console.error('Formspree error:', errorData);
+                    throw new Error('Formspree 전송에 실패했습니다.');
+                }
+                return { success: true, target: 'Formspree' };
             });
+            promises.push(formspreePromise);
 
-            if (response.ok) {
+            // 2. 구글 시트 전송 프로미스 추가 (URL이 설정되어 있는 경우만)
+            if (GOOGLE_SHEET_URL && GOOGLE_SHEET_URL.trim() !== '') {
+                // 데이터를 x-www-form-urlencoded 포맷으로 변환
+                const params = new URLSearchParams();
+                for (const key in data) {
+                    if (Array.isArray(data[key])) {
+                        params.append(key, data[key].join(', '));
+                    } else {
+                        params.append(key, data[key]);
+                    }
+                }
+
+                const sheetPromise = fetch(GOOGLE_SHEET_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // CORS 우회용 no-cors 설정
+                    cache: 'no-cache',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: params.toString()
+                }).then(() => {
+                    // no-cors 모드에서는 응답 상태 확인이 불가능하므로 호출 완료 시 성공으로 간주
+                    return { success: true, target: 'Google Sheets' };
+                }).catch(err => {
+                    console.error('Google Sheet submission error (ignored for UX):', err);
+                    return { success: false, target: 'Google Sheets', error: err };
+                });
+                promises.push(sheetPromise);
+            }
+
+            // 모든 전송 완료 대기 (구글 시트 오류는 내부에서 잡아두었으므로 Formspree가 성공하면 정상 작동함)
+            const results = await Promise.all(promises);
+            const formspreeResult = results.find(r => r.target === 'Formspree');
+
+            if (formspreeResult && formspreeResult.success) {
                 form.classList.add('hidden');
                 document.querySelector('.progress-bar').classList.add('hidden');
                 successMessage.classList.remove('hidden');
             } else {
-                const errorData = await response.json();
-                console.error('Formspree error:', errorData);
-                throw new Error('Formspree response not ok');
+                throw new Error('예약 데이터 전송에 실패했습니다.');
             }
 
         } catch (error) {
             console.error('Submission failed:', error);
-            alert('An error occurred during transmission. Please try again.\n(Error: ' + error.message + ')');
+            alert('데이터 전송 중 오류가 발생했습니다. 다시 시도해 주세요.\n(오류: ' + error.message + ')');
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalText;
         }
     });
+
+    // --- PDF Viewer Modal Logic ---
+    const openPdfBtn = document.getElementById('openPdfBtn');
+    const closePdfBtn = document.getElementById('closePdfBtn');
+    const pdfModal = document.getElementById('pdfModal');
+    const pdfFrame = document.getElementById('pdfFrame');
+    const pdfOverlay = document.querySelector('.pdf-modal-overlay');
+
+    if (openPdfBtn && pdfModal && pdfFrame) {
+        openPdfBtn.addEventListener('click', () => {
+            pdfFrame.src = 'assets/guide.pdf';
+            pdfModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        const closePdf = () => {
+            pdfModal.classList.add('hidden');
+            pdfFrame.src = '';
+            document.body.style.overflow = '';
+        };
+
+        if (closePdfBtn) closePdfBtn.addEventListener('click', closePdf);
+        if (pdfOverlay) pdfOverlay.addEventListener('click', closePdf);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !pdfModal.classList.contains('hidden')) {
+                closePdf();
+            }
+        });
+    }
 });
