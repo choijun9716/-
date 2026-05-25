@@ -256,34 +256,4 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.innerHTML = originalText;
         }
     });
-
-    // --- PDF Viewer Modal Logic ---
-    const openPdfBtn = document.getElementById('openPdfBtn');
-    const closePdfBtn = document.getElementById('closePdfBtn');
-    const pdfModal = document.getElementById('pdfModal');
-    const pdfFrame = document.getElementById('pdfFrame');
-    const pdfOverlay = document.querySelector('.pdf-modal-overlay');
-
-    if (openPdfBtn && pdfModal && pdfFrame) {
-        openPdfBtn.addEventListener('click', () => {
-            pdfFrame.src = 'assets/guide.pdf';
-            pdfModal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        });
-
-        const closePdf = () => {
-            pdfModal.classList.add('hidden');
-            pdfFrame.src = '';
-            document.body.style.overflow = '';
-        };
-
-        if (closePdfBtn) closePdfBtn.addEventListener('click', closePdf);
-        if (pdfOverlay) pdfOverlay.addEventListener('click', closePdf);
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !pdfModal.classList.contains('hidden')) {
-                closePdf();
-            }
-        });
-    }
 });
