@@ -130,7 +130,7 @@ a {
 }
 
 .hero-bg {
-    background-image: url('assets/main-hero.jpg');
+    background-image: url('assets/main-hero.jpg?v=2');
     background-size: cover;
     background-position: center;
     position: absolute;
@@ -785,7 +785,7 @@ footer {
     }
     
     .hero-bg {
-        background-image: url('assets/P1095098.jpg'); /* 세로형 이미지 대체 */
+        background-image: url('assets/P1095098.jpg?v=2'); /* 세로형 이미지 대체 */
     }
     
     /* Footer */
