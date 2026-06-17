@@ -158,7 +158,7 @@ a {
 }
 
 .hero-bg {
-    background-image: url('assets/main-hero.jpg?v=2');
+    background-image: url('assets/main-hero.jpg?v=3');
     background-size: cover;
     background-position: center;
     position: absolute;
@@ -167,7 +167,7 @@ a {
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: 0.8; /* Make image visible but content readable */
+    opacity: 1; /* Remove white overlay */
 }
 
 .hero-content p {
@@ -813,7 +813,7 @@ footer {
     }
     
     .hero-bg {
-        background-image: url('assets/P1095098.jpg?v=2'); /* 세로형 이미지 대체 */
+        background-image: url('assets/mobile-hero-2.jpg?v=3'); /* 세로형 이미지 대체 */
     }
     
     /* Footer */
