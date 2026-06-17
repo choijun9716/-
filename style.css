@@ -129,6 +129,19 @@ a {
     letter-spacing: -2px;
 }
 
+.hero-bg {
+    background-image: url('assets/main-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.8; /* Make image visible but content readable */
+}
+
 .hero-content p {
     font-size: 1.2rem;
     color: #555;
@@ -763,6 +776,16 @@ footer {
     /* Slanted Marquee */
     .marquee-slanted-content span {
         font-size: 1.2rem;
+    }
+    
+    /* Hero Adjustments */
+    .hero {
+        padding-top: 100px;
+        min-height: 80vh;
+    }
+    
+    .hero-bg {
+        background-image: url('assets/P1095098.jpg'); /* 세로형 이미지 대체 */
     }
     
     /* Footer */
