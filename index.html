@@ -1,339 +1,271 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Myungokhun Clinic - Treatment Reservation Survey</title>
-    <meta name="description" content="Reservation survey for customized treatment at Myungokhun Clinic.">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css">
+    <title>Dr.O'Lion - Alpha-core Inositol & Choline</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
-    <div class="background-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
+    <!-- Top Banner -->
+    <div id="topBanner" class="top-banner">
+        <button class="banner-close" onclick="document.getElementById('topBanner').style.display='none'; document.getElementById('header').style.top='0';"><i class="fa-solid fa-xmark"></i></button>
+        <div class="banner-content">
+            오픈 기념 특별 이벤트 🍋 알파코어 이노시톨 최대 30% 할인
+        </div>
     </div>
 
-    <main class="app-container">
-        <header class="header">
-            <div class="logo-container">
-                <img src="assets/logo.png" alt="Myungokhun Clinic Logo" class="main-logo">
-            </div>
-            <div class="header-link">
-                <a href="https://myungokhunreservation.store/assets/guide.pdf" target="_blank" class="text-link">
-                    View Treatment Details
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
-                    </svg>
-                </a>
-            </div>
-        </header>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-left">
+            <nav>
+                <a href="#">SHOP</a>
+                <a href="#">BRAND</a>
+                <a href="#">JOURNAL</a>
+            </nav>
+        </div>
+        <div class="header-center">
+            <a href="#" class="logo"><img src="assets/logo.png" alt="Dr.O'Lion" style="height: 30px; vertical-align: middle;"></a>
+        </div>
+        <div class="header-right">
+            <a href="#"><i class="fa-solid fa-user"></i></a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+    </header>
 
-        <div class="progress-bar">
-            <div class="progress-track">
-                <div class="progress-fill" id="progressFill"></div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg" style="background-image: url('assets/P1095074.jpg'); background-size: cover; background-position: center; position: absolute; top:0; left:0; width:100%; height:100%; z-index: -1; opacity: 0.2;"></div>
+        <div class="hero-content fade-in">
+            <h1 style="letter-spacing: -1px;">ALPHA-CORE<br>INOSITOL</h1>
+            <p>의사·약사 공동개발 배합으로 완성한 닥터올라이언</p>
+            <a href="#" class="btn btn-primary">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee">
+        <div class="marquee-content">
+            <span>DR. O'LION</span>
+            <span>•</span>
+            <span>ALPHA-CORE INOSITOL & CHOLINE</span>
+            <span>•</span>
+            <span>HEALTHY HABIT</span>
+            <span>•</span>
+            <span>DR. O'LION</span>
+            <span>•</span>
+            <span>ALPHA-CORE INOSITOL & CHOLINE</span>
+            <span>•</span>
+            <span>HEALTHY HABIT</span>
+            <span>•</span>
+            <span>DR. O'LION</span>
+            <span>•</span>
+            <span>ALPHA-CORE INOSITOL & CHOLINE</span>
+            <span>•</span>
+            <span>HEALTHY HABIT</span>
+            <span>•</span>
+            <span>DR. O'LION</span>
+            <span>•</span>
+            <span>ALPHA-CORE INOSITOL & CHOLINE</span>
+            <span>•</span>
+            <span>HEALTHY HABIT</span>
+            <span>•</span>
+        </div>
+    </div>
+
+    <!-- Brand Philosophy -->
+    <section class="brand-philosophy scroll-trigger">
+        <div class="philosophy-text">
+            <h2>나를 위한 매일의 활력, <br>닥터올라이언</h2>
+            <p>닥터올라이언은 의사와 약사가 공동 개발한 최적의 배합으로, 당신의 일상에 상큼한 에너지를 채워줍니다. 상큼한 레몬맛으로 매일매일 가볍게 건강을 챙기세요.</p>
+            <a href="#" class="btn btn-secondary">Discover Brand</a>
+        </div>
+        <div class="philosophy-image">
+            <img src="assets/P1095085-3.jpg" alt="Lemons">
+        </div>
+    </section>
+
+    <!-- Best Sellers -->
+    <section class="best-sellers scroll-trigger">
+        <div class="section-header">
+            <h2>Best Sellers</h2>
+            <a href="#" class="view-all">View All</a>
+        </div>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="assets/P1095093.jpg" alt="Product" class="img-front">
+                    <img src="assets/P1095098.jpg" alt="Product Hover" class="img-hover">
+                </div>
+                <div class="product-info">
+                    <h3>알파코어 이노시톨 앤 콜린 1개월분</h3>
+                    <p class="price">49,000원</p>
+                </div>
             </div>
-            <div class="steps-indicator">
-                <span class="step-dot active"></span>
-                <span class="step-dot"></span>
-                <span class="step-dot"></span>
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="assets/P1095101.jpg" alt="Product" class="img-front">
+                    <img src="assets/P1095085-3.jpg" alt="Product Hover" class="img-hover">
+                </div>
+                <div class="product-info">
+                    <h3>알파코어 이노시톨 앤 콜린 3개월분</h3>
+                    <p class="price">139,000원</p>
+                </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="assets/P1095074.jpg" alt="Product" class="img-front">
+                    <img src="assets/P1095093.jpg" alt="Product Hover" class="img-hover">
+                </div>
+                <div class="product-info">
+                    <h3>알파코어 이노시톨 앤 콜린 6개월분</h3>
+                    <p class="price">269,000원</p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <form id="surveyForm" class="survey-form">
-            <!-- Step 1: Treatment & Dates -->
-            <section class="form-step active" data-step="1">
-                <div class="step-header">
-                    <h2>What treatment(s) are you interested in?</h2>
-                    <p class="notice">📌Please make sure your email address and WhatsApp number are entered correctly.
-                    </p>
-                </div>
-
-                <div class="treatment-grid">
-                    <label class="checkbox-card">
-                        <input type="checkbox" name="treatment" value="Diet Program">
-                        <span class="card-content">
-                            <span class="code">A</span>
-                            <span class="label">Diet Program</span>
-                        </span>
-                    </label>
-                    <label class="checkbox-card">
-                        <input type="checkbox" name="treatment" value="Facial Asymmetry">
-                        <span class="card-content">
-                            <span class="code">B</span>
-                            <span class="label">Facial Asymmetry Treatment</span>
-                        </span>
-                    </label>
-                    <label class="checkbox-card">
-                        <input type="checkbox" name="treatment" value="Thread Lifting">
-                        <span class="card-content">
-                            <span class="code">C</span>
-                            <span class="label">Thread Lifting (Face / Body)</span>
-                        </span>
-                    </label>
-                    <label class="checkbox-card">
-                        <input type="checkbox" name="treatment" value="Laser Lifting">
-                        <span class="card-content">
-                            <span class="code">D</span>
-                            <span class="label">Laser Lifting (Face / Body)</span>
-                        </span>
-                    </label>
-                    <label class="checkbox-card">
-                        <input type="checkbox" name="treatment" value="Scar Treatment">
-                        <span class="card-content">
-                            <span class="code">E</span>
-                            <span class="label">Scar Treatment</span>
-                        </span>
-                    </label>
-                    <label class="checkbox-card">
-                        <input type="checkbox" name="treatment" value="Stretch Mark">
-                        <span class="card-content">
-                            <span class="code">F</span>
-                            <span class="label">Stretch Mark Treatment</span>
-                        </span>
-                    </label>
-                    <label class="checkbox-card">
-                        <input type="checkbox" name="treatment" value="Acne Treatment">
-                        <span class="card-content">
-                            <span class="code">G</span>
-                            <span class="label">Acne Treatment</span>
-                        </span>
-                    </label>
-                    <label class="checkbox-card">
-                        <input type="checkbox" name="treatment" value="Skin Booster">
-                        <span class="card-content">
-                            <span class="code">H</span>
-                            <span class="label">Skin Booster Treatment</span>
-                        </span>
-                    </label>
-                    <label class="checkbox-card">
-                        <input type="checkbox" name="treatment" value="Herbal Medicine">
-                        <span class="card-content">
-                            <span class="code">I</span>
-                            <span class="label">Customized Herbal Medicine</span>
-                        </span>
-                    </label>
-                    <label class="checkbox-card">
-                        <input type="checkbox" name="treatment" value="Immune Enhancement">
-                        <span class="card-content">
-                            <span class="code">J</span>
-                            <span class="label">Immune Enhancement Treatment</span>
-                        </span>
-                    </label>
-                </div>
-
-                <div class="date-selection">
-                    <h3>Please provide 3 possible dates for your appointment request.</h3>
-                    <p class="sub-notice">These are not confirmed appointment dates</p> <br>
-                    <div class="input-group">
-                        <input type="text" name="preferredDate1" placeholder="Option 1: YYYY-MM-DD"
-                            onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" required>
-                        <input type="text" name="preferredDate2" placeholder="Option 2: YYYY-MM-DD"
-                            onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
-                        <input type="text" name="preferredDate3" placeholder="Option 3: YYYY-MM-DD"
-                            onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
-                    </div>
-                </div>
-
-                <div class="actions">
-                    <button type="button" class="btn btn-primary next-step">Next Step <svg width="20" height="20"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg></button>
-                </div>
-            </section>
-
-            <!-- Step 2: Basic Info -->
-            <section class="form-step" data-step="2">
-                <div class="step-header">
-                    <h2>Basic Information</h2>
-                    <p>Please enter detailed information for accurate consultation.</p>
-                </div>
-
-                <div class="grid-inputs">
-                    <div class="input-field">
-                        <label>Full Name *</label>
-                        <input type="text" name="fullName" placeholder="Enter your full name" required>
-                    </div>
-                    <div class="input-field">
-                        <label>Phone Number *</label>
-                        <input type="tel" name="phone" placeholder="010-0000-0000" required>
-                    </div>
-                    <div class="input-field">
-                        <label>Birth Date *</label>
-                        <input type="date" name="birthDate" required>
-                    </div>
-                    <div class="input-field">
-                        <label>Email Address *</label>
-                        <input type="email" name="email" placeholder="example@mail.com" required>
-                    </div>
-                    <div class="input-field">
-                        <label>Nationality</label>
-                        <div class="custom-select" id="nationalitySelect">
-                            <div class="select-trigger">
-                                <span class="fi fi-kr"></span> <span>Select Nationality</span>
-                            </div>
-                            <div class="select-options" id="countryOptions">
-                                <!-- JS will populate this with all countries -->
-                            </div>
-                            <input type="hidden" name="nationality" id="nationalityInput">
-                        </div>
-                    </div>
-                    <div class="input-field">
-                        <label>Gender</label>
-                        <select name="sex">
-                            <option value="">Select</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="instagram-link">
-                    <label>Instagram link</label>
-                    <p class="hint">Please leave your Instagram ID or link for consultation confirmation.</p>
-                    <input type="text" name="instagram" placeholder="https://instagram.com/yourid">
-                </div>
-
-                <div class="radio-groups">
-                    <div class="radio-field">
-                        <label>Residency Status</label>
-                        <div class="options">
-                            <label><input type="radio" name="residency" value="resident" required> <span>A resident in
-                                    Korea</span></label>
-                            <label><input type="radio" name="residency" value="visitor"> <span>A visitor for short
-                                    term</span></label>
-                        </div>
-                    </div>
-
-                    <div id="stayDuration" class="input-field hidden">
-                        <label>Period of Stay in Korea</label>
-                        <div class="date-range-group">
-                            <div class="date-input-wrapper">
-                                <span class="input-tag">Arrival</span>
-                                <input type="text" name="arrivalDate" placeholder="YYYY-MM-DD"
-                                    onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
-                            </div>
-                            <span class="range-separator">~</span>
-                            <div class="date-input-wrapper">
-                                <span class="input-tag">Departure</span>
-                                <input type="text" name="departureDate" placeholder="YYYY-MM-DD"
-                                    onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="radio-field">
-                        <label>Do you have Korean National Health Insurance? *</label>
-                        <div class="options">
-                            <label><input type="radio" name="insurance" value="yes" required> <span>Yes, I do
-                                    have.</span></label>
-                            <label><input type="radio" name="insurance" value="no"> <span>No, I do not
-                                    have.</span></label>
-                        </div>
-                    </div>
-
-                    <div class="input-field">
-                        <label>How did you get to know Myungokhun?</label>
-                        <select name="discovery">
-                            <option value="">Select</option>
-                            <option value="Instagram">Instagram</option>
-                            <option value="Google">Google</option>
-                            <option value="Friend">Friend</option>
-                            <option value="Others">Others</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="actions">
-                    <button type="button" class="btn btn-secondary prev-step">Previous</button>
-                    <button type="button" class="btn btn-primary next-step">Next Step <svg width="20" height="20"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg></button>
-                </div>
-            </section>
-
-            <!-- Step 3: Final Details -->
-            <section class="form-step" data-step="3">
-                <div class="step-header">
-                    <h2>Final Step</h2>
-                    <p>Please enter the number of people and additional information.</p>
-                </div>
-
-                <div class="input-field">
-                    <label>Number of Patients</label>
-                    <input type="number" name="peopleCount" min="1" value="1" required>
-                </div>
-
-                <div class="policy-box">
-                    <p>A reservation deposit is required to secure your appointment and prevent no-shows.</p>
-                    <p>Once your reservation request has been reviewed and approved, <br>
-                        payment instructions for the deposit will be sent to your registered email address.</p>
-                    <label class="checkbox-simple">
-                        <input type="checkbox" name="policyAgree" required>
-                        <span>I have confirmed the above and agree to proceed with the reservation. </span>
-                    </label>
-                </div>
-
-                <div class="input-field">
-                    <label>Message</label>
-                    <p class="hint">For appointments involving two or more patients, <br>
-                        please provide the full name, date of birth, and requested treatment details for each patient.
-                    </p>
-                    <textarea name="message" rows="5"
-                        placeholder="Please enter any questions or additional requests."></textarea>
-                </div>
-
-                <div class="actions">
-                    <button type="button" class="btn btn-secondary prev-step">Previous</button>
-                    <button type="submit" class="btn btn-submit">Submit Reservation <svg width="20" height="20"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-                        </svg></button>
-                </div>
-            </section>
-        </form>
-
-        <div id="successMessage" class="success-message hidden">
-            <div class="success-icon">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
+    <!-- New Product Split Section -->
+    <section class="new-product-split">
+        <div class="split-left">
+            <img src="assets/P1095098.jpg" alt="Lemons">
+        </div>
+        <div class="split-right">
+            <div class="vertical-text-group">
+                <span class="vertical-main">NEW PRODUCT</span>
+                <span class="vertical-sub">ALPHA-CORE</span>
             </div>
-            <h2>Reservation Request Completed!</h2>
-            <p>We will contact you via the email and Instagram you provided.<br>Please wait a moment.</p>
-            <button type="button" class="btn btn-primary" onclick="location.reload()">Back to Home</button>
+            <div class="right-content">
+                <p class="subtitle">의사·약사 공동개발</p>
+                <h2 style="font-size: 3rem; margin-bottom: 20px;">ALPHA-CORE</h2>
+                <div class="small-image">
+                    <img src="assets/P1095101.jpg" alt="Lemon Water">
+                </div>
+                <p class="desc">미오이노시톨 4,000mg과 알파락트알부민의 시너지<br>상큼한 레몬맛으로 매일매일 가볍게</p>
+            </div>
+            <div class="right-actions">
+                <a href="#" class="action-btn">VIEW</a>
+                <a href="#" class="action-btn">CART</a>
+            </div>
         </div>
-    </main>
+    </section>
 
-    <footer class="footer">
-        <div class="footer-info">
-            <p><strong>Myungokhun Korean Medicine Clinic</strong></p>
-            <p>Director: Jin-hyung Kim | Business Registration: 211-10-46681</p>
-            <p>Address: 3F, 726 Samseong-ro, Gangnam-gu, Seoul, Korea</p>
-            <p>Tel: 02-544-4646</p>
+    <!-- Brand Goods Section -->
+    <section class="brand-goods scroll-trigger">
+        <div class="section-header dark-header">
+            <div>
+                <h2>MD's PICK</h2>
+                <p>닥터올라이언의 추천 건강 솔루션</p>
+            </div>
+            <a href="#" class="view-all-arrow"><i class="fa-solid fa-arrow-right"></i></a>
         </div>
-        <p class="copyright">&copy; 2026 Myungokhun Clinic. All rights reserved.</p>
+        <div class="goods-grid">
+            <!-- Product 1 -->
+            <div class="goods-card">
+                <div class="goods-image">
+                    <img src="assets/P1095074.jpg" alt="비타민C">
+                </div>
+                <div class="goods-info">
+                    <h3>닥터올라이언 리포좀 비타민C</h3>
+                    <p class="price">39,000원</p>
+                </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="goods-card">
+                <div class="goods-image">
+                    <img src="assets/P1095085-3.jpg" alt="오메가3">
+                </div>
+                <div class="goods-info">
+                    <h3>초임계 알티지 오메가3</h3>
+                    <p class="price">45,000원</p>
+                </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="goods-card">
+                <div class="goods-image">
+                    <img src="assets/P1095093.jpg" alt="유산균">
+                </div>
+                <div class="goods-info">
+                    <p class="brand">Dr. O'Lion</p>
+                    <h3>100억 보장 프로바이오틱스</h3>
+                    <p class="price">42,000원</p>
+                </div>
+            </div>
+            <!-- Product 4 -->
+            <div class="goods-card">
+                <div class="goods-image">
+                    <img src="assets/P1095098.jpg" alt="마그네슘">
+                </div>
+                <div class="goods-info">
+                    <h3>신경과 근육을 위한 마그네슘</h3>
+                    <p class="price">35,000원</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slanted Marquee -->
+    <div class="marquee-slanted-container">
+        <div class="marquee-slanted">
+            <div class="marquee-slanted-content">
+                <span>HEALTHY HABIT <i class="fa-solid fa-lemon"></i></span>
+                <span>HEALTHY HABIT <i class="fa-solid fa-lemon"></i></span>
+                <span>HEALTHY HABIT <i class="fa-solid fa-lemon"></i></span>
+                <span>HEALTHY HABIT <i class="fa-solid fa-lemon"></i></span>
+                <span>HEALTHY HABIT <i class="fa-solid fa-lemon"></i></span>
+                <span>HEALTHY HABIT <i class="fa-solid fa-lemon"></i></span>
+                <span>HEALTHY HABIT <i class="fa-solid fa-lemon"></i></span>
+                <span>HEALTHY HABIT <i class="fa-solid fa-lemon"></i></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-links-row">
+                <a href="#">모든 제품 <i class="fa-solid fa-plus" style="font-size: 0.8em"></i></a>
+                <a href="#">오프라인 스토어 찾기</a>
+                <a href="#">상담 문의</a>
+                <a href="#">전문가 칼럼</a>
+                <a href="#">고객센터</a>
+            </div>
+            <div class="footer-links-row">
+                <a href="#">업무 제휴 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8em"></i></a>
+                <a href="#">대량구매/유통 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8em"></i></a>
+                <a href="#">Wholesale/Global <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8em"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-company">
+            <h4>주식회사 닥터올라이언</h4>
+            <p>주소: 서울 강남구 테헤란로 123, 4층 / 사업자등록번호: 123-45-67890 / TEL: 1588-0000 / Email: hello@drolion.com / 대표이사: 김건강 / 통신판매업신고: 2026-서울강남-01234<br>
+            <a href="#" style="color: #999; text-decoration: underline; margin-right: 10px;">이용 약관</a> <a href="#" style="color: #999; text-decoration: underline;">개인정보취급방침</a></p>
+        </div>
+
+        <div class="footer-actions">
+            <button class="footer-btn">로그인</button>
+            <button class="footer-btn">회원가입</button>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#"><i class="fa-solid fa-comment"></i></a>
+            </div>
+            <p class="copyright-text">&copy; 2026 Dr.O'Lion Company</p>
+        </div>
     </footer>
 
+    <!-- FAB -->
+    <button class="fab"><i class="fa-solid fa-ellipsis"></i></button>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
     <script src="script.js"></script>
 </body>
-
 </html>
